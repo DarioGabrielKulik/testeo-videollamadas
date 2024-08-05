@@ -9,7 +9,7 @@ import Peer from 'peerjs';
 export class HomeComponent {
   @ViewChild('localVideo') localVideo!: ElementRef;
   @ViewChild('remoteVideo') remoteVideo!: ElementRef;
-
+  id: string = '';
   private peer: Peer;
   private myStream?: MediaStream;
 
@@ -23,6 +23,7 @@ export class HomeComponent {
 
   setupPeerEvents() {
     this.peer.on('open', (id) => {
+      this.id = id;
       console.log('My peer ID is: ' + id);
     });
 
